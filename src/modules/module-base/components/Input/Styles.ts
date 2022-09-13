@@ -2,33 +2,35 @@ import styled from 'styled-components';
 import { FlexCustom, FlexBase, BorderRadiusCustom } from 'modules/module-theme/constants/Mixin';
 
 export const Container = styled.div<{ isError: boolean }>((props) => ({
-    display: 'flex',
-    alignItems: 'center',
-    position: 'relative',
-    WebkitBorderRadius: '6px',
-    MozBorderRadius: '6px',
-    borderRadius: '6px',
+    ...FlexCustom({ justifyContent: 'flex-start' }),
+    ...BorderRadiusCustom(6),
     width: '80%',
-    padding: '5px 0 5px 15px',
-    marginTop: '10px',
+    padding: '5px 10px',
+    marginTop: 10,
     border: props.isError ? '2px solid #c80000' : '1px solid #000000',
 }));
 
 export const Input = styled.input({
     ...FlexBase,
-    fontSize: '25px',
-    width: '80%',
-    height: '50px',
+    marginRight: 20,
+    fontSize: 25,
+    flexGrow: 1,
+    flexShrink: 1,
+    height: 50,
     fontFamily: 'SegoeUI-Regular, serif',
     border: 'none',
-    outlineColor: '#fff',
+    outlineWidth: 0,
     appearance: 'menulist-button',
     backgroundImage: 'none !important',
     backgroundColor: 'unset !important',
+    ':focus': {
+        // outlineColor: '#f0f2f5',
+        // outlineWidth: 0,
+    },
 });
 
-export const Layer = styled.div<{ isSecureText: boolean }>((props) => ({
-    ...FlexCustom({ position: 'absolute', top: 5, bottom: 5, right: 5, zIndex: 999, display: props.isSecureText ? 'flex' : 'none' }),
+export const Layer = styled.div<{ visible: boolean }>((props) => ({
+    ...FlexCustom({ display: props.visible ? 'flex' : 'none' }),
     ...BorderRadiusCustom(8),
     height: 50,
 }));
@@ -40,8 +42,8 @@ export const LayerIcon = styled.img({
     cursor: 'pointer',
 });
 
-export const Placeholder = styled.span<{ value: string | undefined }>((props) => ({
-    display: props.value ? 'none' : 'flex',
+export const Placeholder = styled.span<{ visible: boolean }>((props) => ({
+    display: props.visible ? 'none' : 'flex',
     position: 'absolute',
     marginLeft: 6,
     color: '#f2761c',

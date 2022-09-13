@@ -6,22 +6,32 @@ import { Container, Input, Layer, LayerIcon, Placeholder } from './Styles';
 // Utils
 import OPEN from 'modules/module-base/assets/images/eye-mo.png';
 import CLOSE from 'modules/module-base/assets/images/eye-dong.png';
+import { emptyFunction } from 'modules/module-base/constants/object';
 
 interface InputProps {
     value?: string;
-    onChange(value?: string, type?: string): void;
     placeholder?: string;
     isRequire?: boolean;
     isError?: boolean;
     isAutoFocus?: boolean;
     isSecureText?: boolean;
     isDisabled?: boolean;
+    onChange?(value?: string, type?: string): void;
 }
 
 export default function InputComponent(props: InputProps) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let TIME_OUT;
-    const { value, onChange, placeholder, isRequire, isAutoFocus, isError, isSecureText, isDisabled } = props;
+    const {
+        value = '',
+        onChange = emptyFunction,
+        placeholder = 'Aa...',
+        isRequire = false,
+        isAutoFocus = false,
+        isError = false,
+        isSecureText = false,
+        isDisabled = false,
+    } = props;
 
     const [getSecureText, setSecureText] = useState(isSecureText);
     const inputRef = useRef() as RefObject<HTMLInputElement>;
@@ -49,7 +59,7 @@ export default function InputComponent(props: InputProps) {
     };
 
     return (
-        <Container isError>
+        <Container isError={isError}>
             <Input
                 ref={inputRef}
                 autoFocus={isAutoFocus}
@@ -59,8 +69,8 @@ export default function InputComponent(props: InputProps) {
                 spellCheck="false"
                 disabled={isDisabled}
             />
-            <Placeholder onClick={onClickFocus} value={value}>{`${placeholder} ${isRequire ? '*' : ''}`}</Placeholder>
-            <Layer onClick={onChangeLayer} isSecureText>
+            <Placeholder onClick={onClickFocus} visible={!value}>{`${placeholder} ${isRequire ? '*' : ''}`}</Placeholder>
+            <Layer onClick={onChangeLayer} visible={isSecureText}>
                 <LayerIcon src={getSecureText ? OPEN : CLOSE} alt={'eye'} />
             </Layer>
         </Container>
