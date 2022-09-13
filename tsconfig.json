@@ -1,0 +1,40 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+
+        // path
+        "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": "src"
+    },
+    "include": ["src"],
+    "paths": {
+//        "modules/*": ["./src/modules/*"],
+//        "module-base/*": ["modules/module-base/*"],
+//        "module-theme/*": ["./src/modules/module-theme/*"]
+    }
+}
