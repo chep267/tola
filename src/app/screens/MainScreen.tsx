@@ -8,14 +8,14 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 // action
-import { SIGN_IN_ACTION } from 'modules/module-auth/actions/SignIn';
+import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
 
 // screen
 import AppRouter from './AppRouter';
-import LoadingScreen from 'modules/module-base/screens/Loading';
+import LoadingScreen from '@module-base/screens/Loading';
 
 // utils
-import { TIME_LOADING_APP } from 'app/constants';
+import { TIME_LOADING_APP } from '@app/constants';
 
 type Props = {
     doStartApp: (onStartSuccess: () => void) => void;

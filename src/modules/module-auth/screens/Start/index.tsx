@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Selector
-import { getMeId } from 'modules/module-auth/selectors/User';
+import { getMeId } from '@module-auth/selectors/User';
 
 // Utils
-import localStorage from 'modules/module-base/utils/localStorage';
+import localStorage from '@module-base/utils/localStorage';
 
 function StartScreen(props: any) {
     const { meIdCookie, meId, companyId, doLoginSuccess } = props;

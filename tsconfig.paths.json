@@ -1,0 +1,21 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
+{
+    "compilerOptions": {
+        "rootDirs": ["./src"],
+        "baseUrl": "./src",
+        "paths": {
+            "@src/*": ["./*"],
+            "@app/*": ["./app/*"],
+            "@modules/*": ["./modules/*"],
+            "@module-base/*": ["./modules/module-base/*"],
+            "@module-theme/*": ["./modules/module-theme/*"],
+            "@module-auth/*": ["./modules/module-auth/*"],
+            "@module-language/*": ["./modules/module-language/*"]
+        },
+    }
+}

@@ -4,19 +4,23 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useIntl } from 'react-intl';
 
 // constant
-import { FlexCustom } from 'modules/module-theme/constants/Mixin';
-import InputComponent from 'modules/module-base/components/Input';
+import { FlexCustom } from '@module-theme/constants/Mixin';
+import InputComponent from '@module-base/components/Input';
+
+// msg
+import msg from '@module-auth/common/msg';
 
 const Form = styled.div({
     ...FlexCustom({ backgroundColor: '#f0f2f5' }),
     flexDirection: 'column',
     width: '50%',
     height: '50%',
-    minHeight: 650,
+    minHeight: 400,
     minWidth: 480,
     borderRadius: 12,
 });
@@ -38,6 +42,10 @@ const FormContent = styled.div({
 });
 
 function SignInForm() {
+    const intl = useIntl();
+    const [account, setAccount] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <Form>
             <Language>
@@ -46,8 +54,14 @@ function SignInForm() {
                 <span>vi</span>
             </Language>
             <FormContent>
-                <InputComponent />
-                <InputComponent isRequire isSecureText />
+                <InputComponent placeholder={intl.formatMessage(msg.placeholderAccount)} value={account} onChange={setAccount} isAutoFocus />
+                <InputComponent
+                    placeholder={intl.formatMessage(msg.placeholderPassword)}
+                    value={password}
+                    onChange={setPassword}
+                    isRequire
+                    isSecureText
+                />
             </FormContent>
         </Form>
     );

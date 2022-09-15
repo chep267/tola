@@ -1,6 +1,6 @@
 import { call } from 'redux-saga/effects';
-import { FIREBASE_GET } from 'modules/module-base/apis/Firebase';
-import { Decrypt } from 'modules/module-base/utils/security/Cipher';
+import { FIREBASE_GET } from '@module-base/apis/Firebase';
+import { Decrypt } from '@module-base/utils/security/Cipher';
 
 //
 

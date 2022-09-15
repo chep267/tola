@@ -15,11 +15,11 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 // Themes
-import ThemeContext from 'modules/module-theme/utils/ThemeContext';
+import ThemeContext from '@module-theme/utils/ThemeContext';
 
 // Utils
-import localStorage from 'modules/module-base/utils/localStorage';
-import { DARK_THEME, LIGHT_THEME } from 'modules/module-theme/constants';
+import localStorage from '@module-base/utils/localStorage';
+import { DARK_THEME, LIGHT_THEME } from '@module-theme/constants';
 
 /**
  * Note: Dam bao cau hinh themes lay tu server duoc tra va truoc khi mount component nay ra.

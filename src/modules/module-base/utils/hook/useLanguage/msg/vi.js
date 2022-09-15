@@ -19,7 +19,7 @@ const msgVI = {
             email: 'Nhập email...',
             password: 'Nhập mật khẩu...',
             exactPass: 'Xác nhận mật khẩu...',
-            code: 'Nhập code...'
+            code: 'Nhập code...',
         },
         fb: 'Đăng nhập qua Facebook',
         gg: 'Đăng nhập qua Google',
@@ -67,7 +67,7 @@ const msgVI = {
                     code: 'Bạn chưa nhập code!',
                     start: 'Mã code đã được gửi tới hòm thư email của bạn.',
                     new: 'Đã gửi code mới! Hãy kiểm tra hòm thư email của bạn.',
-                    server: 'Chưa gửi được email! Nhấn "gửi mã mới" để lấy code!'
+                    server: 'Chưa gửi được email! Nhấn "gửi mã mới" để lấy code!',
                 },
                 pass: {
                     wrong: 'Email này đã được đăng ký!\nHãy thử đăng nhập lại hoặc quên mật khẩu.',
@@ -76,10 +76,9 @@ const msgVI = {
                     passHill: 'Bạn chưa nhập mật khẩu xác nhận!',
                     passWrong: 'Mật khẩu xác nhận không khớp!',
                     success: 'Bạn đã đổi mật khẩu thành công!',
-                }
-            }
-
-        }
+                },
+            },
+        },
     },
     messenger: {
         chat: 'Nhắn tin',
@@ -97,7 +96,7 @@ const msgVI = {
             video: 'Đã gửi video',
             revoke: 'Đã thu hồi tin nhắn',
             delete: 'Đã xóa tin nhắn',
-        }
+        },
     },
     user: {
         name: 'Tên',
@@ -119,9 +118,8 @@ const msgVI = {
             video: 'Video đã chia sẻ',
             file: 'Tệp đã chia sẻ',
             null: 'Thư mục trống',
-        }
-    }
-
+        },
+    },
 };
 
 export default msgVI;

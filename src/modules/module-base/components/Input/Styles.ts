@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexCustom, FlexBase, BorderRadiusCustom } from 'modules/module-theme/constants/Mixin';
+import { FlexCustom, FlexBase, BorderRadiusCustom } from '@module-theme/constants/Mixin';
 
 export const Container = styled.div<{ isError: boolean }>((props) => ({
     ...FlexCustom({ justifyContent: 'flex-start' }),
@@ -12,7 +12,8 @@ export const Container = styled.div<{ isError: boolean }>((props) => ({
 
 export const Input = styled.input({
     ...FlexBase,
-    marginRight: 20,
+    marginRight: 15,
+    marginLeft: 2,
     fontSize: 25,
     flexGrow: 1,
     flexShrink: 1,
@@ -43,8 +44,9 @@ export const LayerIcon = styled.img({
 });
 
 export const Placeholder = styled.span<{ visible: boolean }>((props) => ({
-    display: props.visible ? 'none' : 'flex',
+    display: props.visible ? 'flex' : 'none',
     position: 'absolute',
     marginLeft: 6,
     color: '#f2761c',
+    zIndex: 999,
 }));

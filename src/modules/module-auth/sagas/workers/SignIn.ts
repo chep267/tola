@@ -1,15 +1,15 @@
 import { call, put, all, fork, select } from 'redux-saga/effects';
 
 // Actions
-import { getUserFromServer } from 'modules/module-auth/sagas/helper/SignIn';
+import { getUserFromServer } from '@module-auth/sagas/helper/SignIn';
 
 // Selectors
-import { getMeId } from 'modules/module-auth/selectors/User';
-import { SIGN_IN_ACTION } from 'modules/module-auth/actions/SignIn';
-import { getAvatarBase, getBackgroundBase } from 'modules/module-base/selectors/Firebase';
+import { getMeId } from '@module-auth/selectors/User';
+import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
+import { getAvatarBase, getBackgroundBase } from '@module-base/selectors/Firebase';
 
 // Utils
-import localStorage from 'modules/module-base/utils/localStorage';
+import localStorage from '@module-base/utils/localStorage';
 
 export function* signInWorker(payload: any) {
     // const { email, password = 'abc123', onFailure = emptyFunction, type = 'account', data = emptyObject } = payload;

@@ -5,7 +5,7 @@
  */
 
 import { createAction } from '@reduxjs/toolkit';
-import { AuthReducerProps } from 'modules/module-auth/constants/Type';
+import { AuthReducerProps } from '@module-auth/constants/Type';
 
 const SIGN_IN_ACTION = {
     START_APP: {

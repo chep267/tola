@@ -1,5 +1,5 @@
 import emailjs from '@emailjs/browser';
-import { emptyFunction } from 'modules/module-base/constants/object';
+import { emptyFunction } from '@module-base/constants/object';
 
 const templateParams = (name: string, code: string, email: string) => ({
     name,

@@ -10,15 +10,15 @@ import createSagaMiddleware from 'redux-saga';
 import { configureStore, MiddlewareArray } from '@reduxjs/toolkit';
 
 // screens
-import MainScreen from 'app/screens/MainScreen';
+import MainScreen from '@app/screens/MainScreen';
 
 // redux - saga app
-import rootReducer from 'app/reducers';
-import rootSaga from 'app/sagas';
+import rootReducer from '@app/reducers';
+import rootSaga from '@app/sagas';
 
 // Utils
-import ThemeProvider from 'modules/module-theme/components/ThemeProvider';
-import LanguageProvider from 'modules/module-language/components/LanguageProvider';
+import ThemeProvider from '@modules/module-theme/components/ThemeProvider';
+import LanguageProvider from '@module-language/components/LanguageProvider';
 
 const sagaMiddleware = createSagaMiddleware();
 

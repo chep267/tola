@@ -4,7 +4,7 @@
  *
  */
 
-import StoreAuth from 'modules/module-auth/utils/configs/StoreAuth';
+import StoreAuth from '@module-auth/utils/configs/StoreAuth';
 
 const storeConfig = {
     ...StoreAuth,

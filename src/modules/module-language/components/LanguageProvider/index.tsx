@@ -16,7 +16,7 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 // Utils
-import LanguageContext, { getDeviceLanguage } from 'modules/module-language/utils/LanguageContext';
+import LanguageContext, { getDeviceLanguage } from '@module-language/utils/LanguageContext';
 
 interface Props {
     children: ReactNode;

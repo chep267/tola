@@ -8,16 +8,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Components
-import SignInForm from 'modules/module-auth/components/SignInForm';
+import SignInForm from '@module-auth/components/SignInForm';
 
 // constant
-import { FlexCustom } from 'modules/module-theme/constants/Mixin';
+import { FlexCustom } from '@module-theme/constants/Mixin';
 
 const Container = styled.div({
     ...FlexCustom({ backgroundColor: '#58ACFA' }),
     width: '100%',
     height: '100vh',
-    minHeight: 750,
+    minHeight: 500,
 });
 
 function SignInScreen() {

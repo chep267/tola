@@ -1,4 +1,4 @@
-import { deepGet } from 'modules/module-base/utils/deepObject';
+import { deepGet } from '@module-base/utils/deepObject';
 
 const getState = (state: object, path: Array<string>) => deepGet(state, path);
 

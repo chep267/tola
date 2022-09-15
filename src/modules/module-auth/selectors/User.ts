@@ -4,9 +4,9 @@
  *
  */
 
-import { getState } from 'modules/module-base/selectors/Data';
-import { emptyUser } from 'modules/module-auth/constants/User';
-import { statePath } from 'modules/module-auth/utils/configs/StoreAuth';
+import { getState } from '@module-base/selectors/Data';
+import { emptyUser } from '@module-auth/constants/User';
+import { statePath } from '@module-auth/utils/configs/StoreAuth';
 
 const genUid = () => `uid.${Date.now()}`;
 

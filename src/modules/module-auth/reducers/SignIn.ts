@@ -4,7 +4,7 @@
  *
  */
 
-import { SIGN_IN_ACTION, SIGN_IN_WORKING } from 'modules/module-auth/actions/SignIn';
+import { SIGN_IN_ACTION, SIGN_IN_WORKING } from '@module-auth/actions/SignIn';
 
 const SignInReducers = {
     [SIGN_IN_ACTION.START_APP.SUCCESS]: SIGN_IN_WORKING[SIGN_IN_ACTION.START_APP.SUCCESS],

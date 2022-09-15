@@ -4,7 +4,6 @@
  *
  */
 
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 const path = require('path');
 
 /**
@@ -15,26 +14,28 @@ const path = require('path');
  */
 function resolveTsconfigPathsToAlias({ tsconfigPath = './tsconfig.json', webpackConfigBasePath = __dirname } = {}) {
     const { paths, baseUrl } = require(tsconfigPath).compilerOptions;
-    const aliases: { [key: string]: string } = {};
+    const aliases = {};
 
     Object.keys(paths).forEach((item) => {
         const key = item.replace('/*', '');
         aliases[key] = path.resolve(webpackConfigBasePath, baseUrl, paths[item][0].replace('/*', '').replace('*', ''));
     });
+
+    console.log('aliases: ', aliases);
     return aliases;
 }
 
 module.exports = {
-    //other rules
-    resolve: {
-        plugins: [
-            new TsconfigPathsPlugin({
-                configFile: './tsconfig.json',
-                extensions: ['.js', '.jsx', '.ts', '.tsx'],
-            }),
-        ],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        baseUrl: './',
-        alias: resolveTsconfigPathsToAlias(),
+    webpack: {
+        // alias: resolveTsconfigPathsToAlias(),
+        alias: {
+            '@src': path.resolve(__dirname, 'src'),
+            '@app': path.resolve(__dirname, 'src/app'),
+            '@modules': path.resolve(__dirname, 'src/modules'),
+            '@module-base': path.resolve(__dirname, 'src/modules/module-base'),
+            '@module-theme': path.resolve(__dirname, 'src/modules/module-theme'),
+            '@module-auth': path.resolve(__dirname, 'src/modules/module-auth'),
+            '@module-language': path.resolve(__dirname, 'src/modules/module-language'),
+        },
     },
 };

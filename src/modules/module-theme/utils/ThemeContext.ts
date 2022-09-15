@@ -15,7 +15,7 @@
 import React from 'react';
 
 // Const
-import { LIGHT_THEME } from 'modules/module-theme/constants';
+import { LIGHT_THEME } from '@module-theme/constants';
 
 type Theme = {
     mode: string;

@@ -3,7 +3,7 @@ import { useNavigate, Route, RouteProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Utils
-import localStorage from 'modules/module-base/utils/localStorage';
+import localStorage from '@module-base/utils/localStorage';
 
 interface Props extends RouteProps {
     meId: string;

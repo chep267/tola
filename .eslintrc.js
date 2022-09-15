@@ -4,9 +4,13 @@
  *
  */
 
+const path = require('path');
+
 module.exports = {
     root: true,
     extends: [
+        "prettier",
+        "plugin:jsx-a11y/recommended",
         "eslint:recommended",
         "plugin:prettier/recommended",
         "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
@@ -37,6 +41,10 @@ module.exports = {
             node: {
                 extensions: [".js", ".jsx", ".ts", ".tsx"],
                 paths: ["./src"],
+                moduleDirectory: ["node_modules", "src"],
+                alias: {
+                    map: [['@', path.resolve(__dirname, 'src')]],
+                }
             },
         },
     },
@@ -46,6 +54,7 @@ module.exports = {
         "function-paren-newline": "off", // https://eslint.org/docs/rules/function-paren-newline
         "global-require": "off", // https://eslint.org/docs/rules/global-require
         "import/no-dynamic-require": "off", // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
+        "no-debugger": "off",
         "no-inner-declarations": "off", // https://eslint.org/docs/rules/no-inner-declarations
         // New rules
         "class-methods-use-this": "off",
@@ -55,5 +64,6 @@ module.exports = {
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-ts-comment": 'off',
+        "jsx-a11y/no-autofocus": 'off',
     },
 };

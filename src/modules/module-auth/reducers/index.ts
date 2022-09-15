@@ -4,9 +4,9 @@
  *
  */
 
-import { emptyUser } from 'modules/module-auth/constants/User';
+import { emptyUser } from '@module-auth/constants/User';
 import { createReducer } from '@reduxjs/toolkit';
-import { AuthReducerProps } from 'modules/module-auth/constants/Type';
+import { AuthReducerProps } from '@module-auth/constants/Type';
 import SignInReducers from './SignIn';
 
 const initialState: AuthReducerProps = {

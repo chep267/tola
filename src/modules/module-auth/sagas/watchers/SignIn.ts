@@ -1,10 +1,10 @@
 import { fork, take } from 'redux-saga/effects';
 
 // action
-import { SIGN_IN_ACTION } from 'modules/module-auth/actions/SignIn';
+import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
 
 // worker
-import { signInWorker, startAppWorker } from 'modules/module-auth/sagas/workers/SignIn';
+import { signInWorker, startAppWorker } from '@module-auth/sagas/workers/SignIn';
 
 export function* signInWatcher(): any {
     while (true) {

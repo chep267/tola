@@ -5,7 +5,7 @@
  */
 
 import { all, call, spawn } from 'redux-saga/effects';
-import authSaga from 'modules/module-auth/sagas/watchers/index';
+import authSaga from '@module-auth/sagas/watchers/index';
 // import messageSaga from '../../messenger/sagas/watchers/index';
 
 export default function* rootSaga() {

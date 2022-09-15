@@ -8,7 +8,7 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 // utils
-import Naruto from 'modules/module-base/assets/images/nrt.jpg';
+import Naruto from '@module-base/assets/images/nrt.jpg';
 
 const Container = styled.div({
     display: 'flex',

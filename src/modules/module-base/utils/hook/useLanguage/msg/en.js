@@ -15,17 +15,17 @@ const msgEN = {
             pass: 'Change password',
             change: 'Change',
         },
-        placeholder: {
+        placeHolder: {
             email: 'Press email...',
             password: 'Press password...',
             exactPass: 'Exact password...',
-            code: 'Enter code...'
+            code: 'Enter code...',
         },
         fb: 'SignIn with Facebook',
         gg: 'SignIn with Google ',
         handleText: {
             register: {
-                first: 'You don\'t have account?',
+                first: "You don't have account?",
                 second: 'Register now!',
             },
             login: {
@@ -67,7 +67,7 @@ const msgEN = {
                     code: 'You have not entered the code!',
                     start: 'The code has been sent to your email inbox.',
                     new: 'New code sent! Please check your email inbox.',
-                    server: 'Email not sent! Click "send new code" to get the code!'
+                    server: 'Email not sent! Click "send new code" to get the code!',
                 },
                 pass: {
                     wrong: 'This email has been register!\nTry to SignIn or Forgot password',
@@ -76,9 +76,9 @@ const msgEN = {
                     passHill: 'You have not entered the confirmation password!',
                     passWrong: 'Confirmation password does not match!',
                     success: 'You have successfully changed your password!',
-                }
-            }
-        }
+                },
+            },
+        },
     },
     messenger: {
         chat: 'Chat',
@@ -96,7 +96,7 @@ const msgEN = {
             video: 'Sent video',
             revoke: 'Revoked the message',
             delete: 'Deleted the message',
-        }
+        },
     },
     user: {
         name: 'Name',
@@ -118,7 +118,7 @@ const msgEN = {
             video: 'Shared video',
             file: 'Shared file',
             null: 'Empty',
-        }
+        },
     },
 };
 

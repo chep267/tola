@@ -4,9 +4,9 @@ import React, { useRef, useCallback, useEffect, useState, ChangeEvent, RefObject
 import { Container, Input, Layer, LayerIcon, Placeholder } from './Styles';
 
 // Utils
-import OPEN from 'modules/module-base/assets/images/eye-mo.png';
-import CLOSE from 'modules/module-base/assets/images/eye-dong.png';
-import { emptyFunction } from 'modules/module-base/constants/object';
+import OPEN from '@module-base/assets/images/eye-mo.png';
+import CLOSE from '@module-base/assets/images/eye-dong.png';
+import { emptyFunction } from '@module-base/constants/object';
 
 interface InputProps {
     value?: string;
@@ -16,12 +16,10 @@ interface InputProps {
     isAutoFocus?: boolean;
     isSecureText?: boolean;
     isDisabled?: boolean;
-    onChange?(value?: string, type?: string): void;
+    onChange?(value: string): void;
 }
 
 export default function InputComponent(props: InputProps) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    let TIME_OUT;
     const {
         value = '',
         onChange = emptyFunction,
@@ -36,27 +34,26 @@ export default function InputComponent(props: InputProps) {
     const [getSecureText, setSecureText] = useState(isSecureText);
     const inputRef = useRef() as RefObject<HTMLInputElement>;
 
-    const onClickFocus = useCallback(() => {
-        if (inputRef && inputRef.current) {
-            inputRef.current.focus();
-        }
-    }, [inputRef]);
-
     useEffect(() => {
         if (isError) onClickFocus();
     }, [isError]);
 
+    useEffect(() => {
+        if (inputRef && inputRef.current && value) {
+            inputRef.current.focus();
+            inputRef.current.selectionStart = inputRef.current.selectionEnd = inputRef.current.value.length;
+        }
+    }, [getSecureText]);
+
+    const onClickFocus = useCallback(() => {
+        if (inputRef && inputRef.current) {
+            inputRef?.current?.focus();
+        }
+    }, [inputRef.current]);
+
     const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => onChange(event.target.value);
 
-    const onChangeLayer = () => {
-        setSecureText(!getSecureText);
-        TIME_OUT = setTimeout(() => {
-            if (inputRef && inputRef.current) {
-                inputRef.current.focus();
-                inputRef.current.selectionStart = inputRef.current.selectionEnd = inputRef.current.value.length;
-            }
-        }, 0);
-    };
+    const onChangeLayer = useCallback(() => setSecureText((value) => !value), []);
 
     return (
         <Container isError={isError}>
@@ -69,7 +66,7 @@ export default function InputComponent(props: InputProps) {
                 spellCheck="false"
                 disabled={isDisabled}
             />
-            <Placeholder onClick={onClickFocus} visible={!value}>{`${placeholder} ${isRequire ? '*' : ''}`}</Placeholder>
+            <Placeholder onClick={onClickFocus} visible={value === ''}>{`${placeholder} ${isRequire ? '*' : ''}`}</Placeholder>
             <Layer onClick={onChangeLayer} visible={isSecureText}>
                 <LayerIcon src={getSecureText ? OPEN : CLOSE} alt={'eye'} />
             </Layer>

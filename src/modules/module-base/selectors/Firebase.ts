@@ -1,4 +1,4 @@
-import { getUrlFile } from 'modules/module-base/apis/Storage';
+import { getUrlFile } from '@module-base/apis/Storage';
 
 const getAvatarBase = () => getUrlFile('/base/avatar.png');
 

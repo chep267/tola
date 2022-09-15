@@ -8,13 +8,13 @@ import React from 'react';
 import { BrowserRouter, Routes, Route as PublicRoute } from 'react-router-dom';
 
 // Component
-import PrivateRoute from 'modules/module-auth/components/PrivateRoute';
+import PrivateRoute from '@module-auth/components/PrivateRoute';
 
 // Screens
-import NotFoundScreen from 'modules/module-base/screens/NotFound';
-import StartScreen from 'modules/module-auth/screens/Start';
-import SignInScreen from 'modules/module-auth/screens/SignIn';
-// import a from '@module-base/';
+import NotFoundScreen from '@module-base/screens/NotFound';
+import StartScreen from '@module-auth/screens/Start';
+import SignInScreen from '@module-auth/screens/SignIn';
+// import a from 'placeHolder/';
 // // import LoginScreen from "../login/LoginScreen";
 //
 // import MainAppScreen from './MainApp.screen';

@@ -5,7 +5,7 @@
  */
 
 import { combineReducers } from 'redux';
-import authReducer from 'modules/module-auth/reducers/index';
+import authReducer from '@module-auth/reducers/index';
 // import MessengerReducer from "modules/module-messenger/reduces/message";
 
 const rootReducer = combineReducers({
