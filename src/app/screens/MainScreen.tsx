@@ -14,6 +14,9 @@ import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
 import AppRouter from './AppRouter';
 import LoadingScreen from '@module-base/screens/Loading';
 
+// Component
+import ErrorBoundary from '@modules/module-error/components/ErrorBoundary';
+
 // utils
 import { TIME_LOADING_APP } from '@app/constants';
 
@@ -21,7 +24,6 @@ type Props = {
     doStartApp: (onStartSuccess: () => void) => void;
 };
 
-let TimeOut: NodeJS.Timeout;
 function MainScreen({ doStartApp }: Props) {
     const [timer, setTimer] = useState(true);
     const [isLoading, setLoading] = useState(true);
@@ -29,7 +31,7 @@ function MainScreen({ doStartApp }: Props) {
     useEffect(() => {
         const onStartSuccess = () => setLoading(false);
 
-        TimeOut = setTimeout(() => {
+        const TimeOut: NodeJS.Timeout = setTimeout(() => {
             setTimer(false);
         }, TIME_LOADING_APP);
         doStartApp(onStartSuccess);
@@ -39,8 +41,12 @@ function MainScreen({ doStartApp }: Props) {
         };
     }, []);
 
-    if (timer || isLoading) return <LoadingScreen />;
-    return <AppRouter />;
+    // if (timer || isLoading) return <LoadingScreen />;
+    return (
+        <ErrorBoundary isAutoReload>
+            <AppRouter />
+        </ErrorBoundary>
+    );
 }
 
 function mapDispatchToProps(dispatch: any) {

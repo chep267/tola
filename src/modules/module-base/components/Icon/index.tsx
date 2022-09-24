@@ -1,83 +1,40 @@
 /**
-
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
  */
 
 import React, { memo } from 'react';
 
+// utils
+import { emptyObject } from '@module-base/constants/object';
+
 const Icons = {
+    menu: require('./SVG/Menu').default,
     // search: require('./images/Search').default,
     // messenger: require('./images/Messenger').default,
 };
 
-type IconsType =
-    | 'search'
-    | 'messenger'
-    | 'tickDefault'
-    | 'down'
-    | 'up'
-    | 'edit'
-    | 'language'
-    | 'logout'
-    | 'setting'
-    | 'theme'
-    | 'tick'
-    | 'session'
-    | 'circle'
-    | 'createGroup'
-    | 'like'
-    | 'comment'
-    | 'share'
-    | 'left'
-    | 'likeMessenger'
-    | 'more'
-    | 'offNotify'
-    | 'check'
-    | 'info'
-    | 'addPerson'
-    | 'missionWait'
-    | 'missionCompleted'
-    | 'schedule'
-    | 'personalCalendar'
-    | 'attentionCalendar'
-    | 'dot'
-    | 'department'
-    | 'changeColorConversation'
-    | 'changeNickName'
-    | 'notifyStatus'
-    | 'right'
-    | 'chevronRight'
-    | 'reactionLike'
-    | 'reactionLove'
-    | 'reactionLaugh'
-    | 'reactionSad'
-    | 'reactionAngry'
-    | 'reactionSurprise'
-    | 'phone'
-    | 'computer'
-    | 'close'
-    | 'linkApp'
-    | 'reload'
-    | 'question'
-    | 'tablet';
+export type IconsType = 'menu';
 
 interface Props {
     name: IconsType;
     size?: number;
-    color?: string;
+    fill?: string;
+    stroke?: string;
     style?: object;
 }
 
-const IconsBase = (props: Props) => {
-    const { name, size, color, style } = props;
-    // @ts-ignore
+function IconsBase(props: Props) {
+    const { name, size, fill, stroke, style } = props;
     const Icon = Icons[name];
-    return <Icon width={size} height={size} color={color} style={style} />;
-};
+    return <Icon width={size} height={size} fill={fill} stroke={stroke} style={style} />;
+}
 
 IconsBase.defaultProps = {
-    size: 24,
-    color: '#ddd',
-    style: {},
+    size: 20,
+    color: '#000',
+    style: emptyObject,
 };
 
 export default memo(IconsBase);

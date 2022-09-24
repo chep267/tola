@@ -30,8 +30,22 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
+        
+        // path
+        "rootDirs": ["./"],
+        "baseUrl": "./",
+        "paths": {
+            "@src/*": ["src/*"],
+            "@app/*": ["src/app/*"],
+            "@modules/*": ["src/modules/*"],
+            "@module-base/*": ["src/modules/module-base/*"],
+            "@module-theme/*": ["src/modules/module-theme/*"],
+            "@module-auth/*": ["src/modules/module-auth/*"],
+            "@module-error/*": ["src/modules/module-error/*"],
+            "@module-language/*": ["src/modules/module-language/*"]
+        }
     },
     "include": [ "src", "./**/*", "./*", ".eslintrc.js", "**/*.ts", "**/*.tsx", "**/*.less"],
     "exclude": ["node_modules"],
-    "extends": "./tsconfig.paths.json"
+//    "extends": "./tsconfig.paths.json"
 }

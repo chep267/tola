@@ -1,3 +1,9 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
 import { CSSObject } from 'styled-components';
 
 export const FlexBase: CSSObject = {
