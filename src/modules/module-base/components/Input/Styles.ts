@@ -1,13 +1,19 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
 import styled from 'styled-components';
 import { FlexCustom, FlexBase, BorderRadiusCustom } from '@module-theme/constants/Mixin';
 
-export const Container = styled.div<{ isError: boolean }>((props) => ({
+export const Container = styled.div<{ isError: boolean }>(({ isError }) => ({
     ...FlexCustom({ justifyContent: 'flex-start' }),
     ...BorderRadiusCustom(6),
     width: '80%',
     padding: '5px 10px',
     marginTop: 10,
-    border: props.isError ? '2px solid #c80000' : '1px solid #000000',
+    border: isError ? '2px solid #c80000' : '1px solid #000000',
 }));
 
 export const Input = styled.input({
@@ -24,16 +30,15 @@ export const Input = styled.input({
     appearance: 'menulist-button',
     backgroundImage: 'none !important',
     backgroundColor: 'unset !important',
-    ':focus': {
-        // outlineColor: '#f0f2f5',
-        // outlineWidth: 0,
-    },
 });
 
-export const Layer = styled.div<{ visible: boolean }>((props) => ({
-    ...FlexCustom({ display: props.visible ? 'flex' : 'none' }),
+export const Layer = styled.div<{ visible: boolean }>(({ visible }) => ({
+    ...FlexCustom({ display: visible ? 'flex' : 'none', height: 50, opacity: 0.25 }),
     ...BorderRadiusCustom(8),
-    height: 50,
+    transition: 'all 0.5s ease',
+    ':hover': {
+        opacity: 1,
+    },
 }));
 
 export const LayerIcon = styled.img({
@@ -43,8 +48,8 @@ export const LayerIcon = styled.img({
     cursor: 'pointer',
 });
 
-export const Placeholder = styled.span<{ visible: boolean }>((props) => ({
-    display: props.visible ? 'flex' : 'none',
+export const Placeholder = styled.span<{ visible: boolean }>(({ visible }) => ({
+    display: visible ? 'flex' : 'none',
     position: 'absolute',
     marginLeft: 6,
     color: '#f2761c',

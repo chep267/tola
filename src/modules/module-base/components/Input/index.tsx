@@ -1,3 +1,9 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
 import React, { useRef, useCallback, useEffect, useState, ChangeEvent, RefObject } from 'react';
 
 // Component
@@ -66,7 +72,9 @@ export default function InputComponent(props: InputProps) {
                 spellCheck="false"
                 disabled={isDisabled}
             />
-            <Placeholder onClick={onClickFocus} visible={value === ''}>{`${placeholder} ${isRequire ? '*' : ''}`}</Placeholder>
+            <Placeholder onClick={onClickFocus} visible={value === ''}>{`${placeholder} ${
+                isRequire ? '*' : ''
+            }`}</Placeholder>
             <Layer onClick={onChangeLayer} visible={isSecureText}>
                 <LayerIcon src={getSecureText ? OPEN : CLOSE} alt={'eye'} />
             </Layer>

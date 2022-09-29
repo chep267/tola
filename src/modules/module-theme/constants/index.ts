@@ -56,6 +56,7 @@ export const themes = {
         // Bộ màu cơ bản cung cấp sẵn dùng
         color: {
             text: {
+                light: '#f0f2f5',
                 default: '#000000',
                 placeholder: '#747474',
                 custom: '#707070',
@@ -106,12 +107,12 @@ export const themes = {
 
     [DARK_THEME]: {
         // Bộ màu cơ bản cung cấp sẵn dùng
-        // Bộ màu cơ bản cung cấp sẵn dùng
         color: {
             text: {
-                default: '#ffffff',
-                placeholder: '#757575',
-                custom: '#E4E4E4',
+                light: '#f0f2f5',
+                default: '#000000',
+                placeholder: '#747474',
+                custom: '#707070',
                 label: '#9a9a9a',
                 hint: '#828282',
                 // Link Color
@@ -120,6 +121,7 @@ export const themes = {
             },
             background: {
                 default: '#ffffff',
+                gray: '#f0f2f5',
                 main: DARK_COLOR.MAIN_COLOR,
                 bodyBG: DARK_COLOR.BODY_BG,
                 border: '#e6e7e8',
@@ -137,7 +139,7 @@ export const themes = {
             state: {
                 // State Color
                 stateDefaultColor: '#F4F7FC',
-                statePrimaryColor: DARK_COLOR.MAIN_COLOR,
+                statePrimaryColor: LIGHT_COLOR.MAIN_COLOR,
                 stateSuccessColor: '#00cc52',
                 stateInfoColor: '#1c99f8',
                 stateWarningColor: '#ffac38',

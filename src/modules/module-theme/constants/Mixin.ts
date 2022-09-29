@@ -4,6 +4,7 @@
  *
  */
 
+import { emptyObject } from '@module-base/constants/object';
 import { CSSObject } from 'styled-components';
 
 export const FlexBase: CSSObject = {
@@ -13,25 +14,25 @@ export const FlexBase: CSSObject = {
     alignItems: 'center',
 };
 
-export const FlexCustom = (Style: CSSObject) => ({
+export const FlexCustom = (Style: CSSObject = emptyObject) => ({
     ...FlexBase,
     ...Style,
 });
 
 export const BorderRadiusCustom = (value: number | string) => ({
-    borderRadius: value,
-    WebkitBorderTopLeftRadius: value,
-    MozBorderRadius: value,
+    borderRadius: value || 0,
+    WebkitBorderTopLeftRadius: value || 0,
+    MozBorderRadius: value || 0,
 });
 
 export const BorderRadiusTopAndBottomCustom = (top: number | string, bottom: number | string) => ({
-    borderTopLeftRadius: top,
-    borderTopRightRadius: top,
-    borderBottomLeftRadius: bottom || top,
-    borderBottomRightRadius: bottom || top,
+    borderTopLeftRadius: top || 0,
+    borderTopRightRadius: top || 0,
+    borderBottomLeftRadius: bottom || top || 0,
+    borderBottomRightRadius: bottom || top || 0,
 
-    WebkitBorderTopLeftRadius: top,
-    WebkitBorderTopRightRadius: top,
-    WebkitBorderBottomLeftRadius: bottom || top,
-    WebkitBorderBottomRightRadius: bottom || top,
+    WebkitBorderTopLeftRadius: top || 0,
+    WebkitBorderTopRightRadius: top || 0,
+    WebkitBorderBottomLeftRadius: bottom || top || 0,
+    WebkitBorderBottomRightRadius: bottom || top || 0,
 });

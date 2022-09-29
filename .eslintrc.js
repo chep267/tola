@@ -32,7 +32,7 @@ module.exports = {
             arrowFunctions: true,
         },
     },
-    plugins: ["react", "@typescript-eslint", "prettier"],
+    plugins: ["react", "@typescript-eslint", "prettier", "formatjs"],
     settings: {
         react: {
             version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
@@ -50,6 +50,7 @@ module.exports = {
     },
     rules: {
         // Existing rules
+        "formatjs/no-offset": "error",
         "comma-dangle": "off", // https://eslint.org/docs/rules/comma-dangle
         "function-paren-newline": "off", // https://eslint.org/docs/rules/function-paren-newline
         "global-require": "off", // https://eslint.org/docs/rules/global-require

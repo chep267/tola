@@ -5,7 +5,11 @@
     "dependencies": {
         "@craco/craco": "^6.4.5",
         "@emailjs/browser": "^3.7.0",
+        "@emotion/react": "^11.10.4",
+        "@emotion/styled": "^11.10.4",
+        "@mui/icons-material": "^5.10.6",
         "@mui/material": "^5.10.2",
+        "@mui/styled-engine-sc": "^5.10.6",
         "@reduxjs/toolkit": "^1.8.5",
         "firebase": "^9.9.3",
         "react": "^18.2.0",
@@ -21,6 +25,7 @@
         "typescript": "^4.7.4"
     },
     "devDependencies": {
+        "@formatjs/icu-messageformat-parser": "^2.1.7",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.3.0",
         "@testing-library/user-event": "^13.5.0",
@@ -31,13 +36,14 @@
         "@types/styled-components": "^5.1.26",
         "@typescript-eslint/eslint-plugin": "^5.36.2",
         "@typescript-eslint/parser": "^5.36.2",
-        "eslint": "^8.23.0",
+        "eslint": "^8.24.0",
         "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-formatjs": "^4.3.1",
         "eslint-plugin-prettier": "^4.2.1",
         "prettier": "^2.7.1",
         "prettier-eslint": "^15.0.1",
-        "web-vitals": "^2.1.4",
-        "tsconfig-paths-webpack-plugin": "^4.0.0"
+        "tsconfig-paths-webpack-plugin": "^4.0.0",
+        "web-vitals": "^2.1.4"
     },
     "scripts": {
         "start": "craco start",

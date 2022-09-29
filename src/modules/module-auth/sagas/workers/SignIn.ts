@@ -46,7 +46,11 @@ export function* startAppWorker(payload: any): any {
     if (isAuthUser) {
         const meId = yield select(getMeId);
         const user = yield call(getUserFromServer, meId);
-        yield put(user ? { type: SIGN_IN_ACTION.SIGN_IN.SUCCESS, payload: { user } } : { type: SIGN_IN_ACTION.SIGN_IN.FAILURE, payload: {} });
+        yield put(
+            user
+                ? { type: SIGN_IN_ACTION.SIGN_IN.SUCCESS, payload: { user } }
+                : { type: SIGN_IN_ACTION.SIGN_IN.FAILURE, payload: {} }
+        );
     }
     const [avatar, background] = yield all([call(getAvatarBase), call(getBackgroundBase)]);
     yield put({ type: SIGN_IN_ACTION.START_APP.SUCCESS, payload: { avatar, background } });

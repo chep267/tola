@@ -1,3 +1,9 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
 import React from 'react';
 
 // Component
@@ -11,7 +17,7 @@ interface ButtonProps {
     itemClassName?: string;
     buttonClassName?: string;
     isDisabled?: boolean;
-    onPress?(): void;
+    onPress?(arg?: any): void;
     text?: string;
     mode?: string;
     icon?: {
@@ -37,15 +43,9 @@ export default function Button(props: ButtonProps) {
     } = props;
 
     return (
-        <Container
-            className={`${className} ${buttonClassName}`}
-            onClick={onPress}
-            disabled={isDisabled}
-            style={style}>
+        <Container className={`${className} ${buttonClassName}`} onClick={onPress} disabled={isDisabled} style={style}>
             {text ? <span className={itemClassName}>{text}</span> : null}
-            {icon ? (
-                <Icon name={icon.name} size={icon.size} fill={icon.fill} stroke={icon.stroke} />
-            ) : null}
+            {icon ? <Icon name={icon.name} size={icon.size} fill={icon.fill} stroke={icon.stroke} /> : null}
         </Container>
     );
 }

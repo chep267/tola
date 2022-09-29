@@ -23,4 +23,28 @@ export default defineMessages({
         id: 'module.auth.password',
         defaultMessage: 'Mật khẩu',
     },
+    lang: {
+        id: 'module.language.lang',
+        defaultMessage: 'Ngôn ngữ',
+    },
+    vi: {
+        id: 'module.lang.vi',
+        defaultMessage: 'Tiếng Việt',
+    },
+    en: {
+        id: 'module.lang.en',
+        defaultMessage: 'English',
+    },
+    theme: {
+        id: 'module.theme.theme',
+        defaultMessage: 'Giao diện',
+    },
+    light: {
+        id: 'module.theme.light',
+        defaultMessage: 'Sáng',
+    },
+    dark: {
+        id: 'module.theme.dark',
+        defaultMessage: 'Tối',
+    },
 });

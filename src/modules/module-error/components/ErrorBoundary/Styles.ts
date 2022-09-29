@@ -1,4 +1,5 @@
 import Button from '@module-base/components/Button';
+import { Rounded, Glowing } from '@module-base/components/Button/Animation';
 import styled from 'styled-components';
 
 export const FallBack = styled.div(({ theme }) => ({
@@ -7,14 +8,19 @@ export const FallBack = styled.div(({ theme }) => ({
     img: {
         width: 'auto',
         height: 100,
-        borderRadius: 20,
+        borderRadius: '50%',
     },
 }));
 
 export const Retry = styled(Button)(({ theme }) => ({
-    backgroundColor: theme.color.button.default,
-    color: theme.color.text.default,
-    borderRadius: 30,
     padding: '10px 30px',
     margin: '40px 0 20px',
+    fontSize: theme.fontSize.base,
+    color: theme.color.text.light,
+
+    ...Rounded({ borderRadius: 30 }),
+    // ...Glowing({
+    //     background: 'gray',
+    //     borderRadius: 30,
+    // }),
 }));

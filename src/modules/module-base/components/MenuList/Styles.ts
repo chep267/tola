@@ -1,52 +1,35 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
 import styled from 'styled-components';
-import { FlexCustom, FlexBase, BorderRadiusCustom } from '@module-theme/constants/Mixin';
+import { FlexCustom, FlexBase } from '@module-theme/constants/Mixin';
 
-export const Container = styled.div<{ isError: boolean }>((props) => ({
-    ...FlexCustom({ justifyContent: 'flex-start' }),
-    ...BorderRadiusCustom(6),
+export const List = styled.div<{ isDisabled: boolean }>(({ isDisabled }) => ({
+    ...FlexCustom({ flexDirection: 'column', justifyContent: 'flex-start', display: isDisabled ? 'none' : 'flex' }),
     width: '80%',
-    padding: '5px 10px',
     marginTop: 10,
-    border: props.isError ? '2px solid #c80000' : '1px solid #000000',
-}));
+    overflow: 'hidden',
+    border: '0.5px solid gray',
+    minWidth: 100,
+    height: 'auto',
+    backgroundColor: '#f0f2f5',
 
-export const Input = styled.input({
-    ...FlexBase,
-    marginRight: 15,
-    marginLeft: 2,
-    fontSize: 25,
-    flexGrow: 1,
-    flexShrink: 1,
-    height: 50,
-    fontFamily: 'SegoeUI-Regular, serif',
-    border: 'none',
-    outlineWidth: 0,
-    appearance: 'menulist-button',
-    backgroundImage: 'none !important',
-    backgroundColor: 'unset !important',
-    ':focus': {
-        // outlineColor: '#f0f2f5',
-        // outlineWidth: 0,
+    'div:last-child': {
+        borderBottom: 'unset',
     },
-});
-
-export const Layer = styled.div<{ visible: boolean }>((props) => ({
-    ...FlexCustom({ display: props.visible ? 'flex' : 'none' }),
-    ...BorderRadiusCustom(8),
-    height: 50,
 }));
 
-export const LayerIcon = styled.img({
-    ...BorderRadiusCustom('50%'),
-    width: 50,
-    height: 50,
+export const Item = styled.div<{ height?: number | string; width?: number | string }>(({ height, width, theme }) => ({
+    ...FlexBase,
+    width: width || '100%',
+    height,
+    padding: '5px 10px',
+    borderBottom: `0.5px solid gray`,
     cursor: 'pointer',
-});
-
-export const Placeholder = styled.span<{ visible: boolean }>((props) => ({
-    display: props.visible ? 'flex' : 'none',
-    position: 'absolute',
-    marginLeft: 6,
-    color: '#f2761c',
-    zIndex: 999,
+    ':hover': {
+        backgroundColor: '#fff',
+    },
 }));

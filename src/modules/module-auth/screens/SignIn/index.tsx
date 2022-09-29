@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Components
-import SignInForm from '@module-auth/components/SignInForm';
+import FormAuth from '@module-auth/components/Form';
 
 // constant
 import { FlexCustom } from '@module-theme/constants/Mixin';
@@ -23,7 +23,7 @@ const Container = styled.div({
 function SignInScreen() {
     return (
         <Container>
-            <SignInForm />
+            <FormAuth />
         </Container>
     );
 }

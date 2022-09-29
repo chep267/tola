@@ -34,6 +34,8 @@ module.exports = {
             }),
         ],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        // alias: resolveTsconfigPathsToAlias(),
+        alias: {
+            '@formatjs/icu-messageformat-parser': '@formatjs/icu-messageformat-parser/no-parser',
+        },
     },
 };

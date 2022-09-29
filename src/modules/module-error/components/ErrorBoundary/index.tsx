@@ -38,6 +38,6 @@ export default class ErrorBoundary extends React.Component<
             return <FallBack isAutoReload={isAutoReload} />;
         }
 
-        return <FallBack isAutoReload={isAutoReload} />;
+        return children;
     }
 }

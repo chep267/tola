@@ -4,6 +4,7 @@
  *
  */
 
+import PureContainer from '@module-base/components/PureContainer';
 import React, { useCallback, useState } from 'react';
 
 // Component
@@ -40,10 +41,12 @@ export default function FallbackComponent({ isAutoReload }: { isAutoReload: bool
     return (
         <SafeLayout>
             <FallBack>
-                <img src={require('@module-base/assets/images/404.jpg')} alt="err" />
-                <h1>{intl.formatMessage(msg.fallbackTitle)}</h1>
-                <h2>{intl.formatMessage(msg.fallbackContent)}</h2>
-                <Retry onPress={reloadWindow} text={intl.formatMessage(msg.retry)} />
+                <PureContainer>
+                    <img src={require('@module-base/assets/images/error.jpeg')} alt="err" />
+                    <h1>{intl.formatMessage(msg.fallbackTitle)}</h1>
+                    <h2>{intl.formatMessage(msg.fallbackContent)}</h2>
+                    <Retry onPress={reloadWindow} text={intl.formatMessage(msg.retry)} />
+                </PureContainer>
                 {isAutoReload && <p>{intl.formatMessage(msg.autoReload, { value: second })}</p>}
             </FallBack>
         </SafeLayout>
