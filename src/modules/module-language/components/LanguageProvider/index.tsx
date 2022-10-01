@@ -12,11 +12,11 @@ import LanguageContext, { getDeviceLanguage } from '@module-language/utils/Langu
 
 interface Props {
     children: ReactNode;
-    messages: any;
+    messages: object;
 }
 
 function LanguageProvider({ children, messages }: Props) {
-    const [language, setLanguage] = useState<string>(() => {
+    const [locale, setLocale] = useState<string>(() => {
         const value = getDeviceLanguage();
         // vi_VN | en_UK | en_US | ...
         return value.slice(0, 2);
@@ -24,32 +24,32 @@ function LanguageProvider({ children, messages }: Props) {
 
     useEffect(() => {
         const initLanguage = async () => {
-            const locale = await localStorage.getItem('language');
-            if (locale && language !== locale) {
-                setLanguage(locale);
+            const lastLocale = await localStorage.getItem('lastLocale');
+            if (lastLocale && lastLocale !== locale) {
+                setLocale(lastLocale);
             }
         };
 
         initLanguage().then();
     }, []);
 
-    const onChangeLanguage = (value: 'vi' | 'en') => {
-        localStorage.setItem('language', value);
-        setLanguage(value);
+    const toggleLanguage = (value: 'vi' | 'en') => {
+        localStorage.setItem('lastLocale', value);
+        setLocale(value);
     };
 
     const store = React.useMemo(
         () => ({
-            language,
+            locale,
             messages,
-            onChangeLanguage,
+            toggleLanguage,
         }),
-        [language] // eslint-disable-line
+        [locale] // eslint-disable-line
     );
 
     return (
         <LanguageContext.Provider value={store}>
-            <IntlProvider locale={language} key={language} messages={messages[language]}>
+            <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
                 {children}
             </IntlProvider>
         </LanguageContext.Provider>

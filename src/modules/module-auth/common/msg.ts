@@ -6,6 +6,16 @@
 
 import { defineMessages } from 'react-intl';
 
+// const getMSG = (obj) => {
+//     const data = {};
+//     Object.entries(obj).forEach((value) => {
+//         let key = value[0].split('.');
+//         key = key[key.length - 1];
+//         data[key] = value[1];
+//     });
+//     return data;
+// };
+
 export default defineMessages({
     placeholderAccount: {
         id: 'module.auth.placeholder.account',

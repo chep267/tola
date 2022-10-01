@@ -5,11 +5,12 @@
  */
 
 import React from 'react';
+import messages from '@module-language/common/msg';
 
 export interface LanguageProps {
-    language: string;
+    locale: string;
     messages: object;
-    onChangeLanguage?: (value: 'vi' | 'en') => void;
+    toggleLanguage: (value: 'vi' | 'en') => void;
 }
 
 export const getDeviceLanguage = () => {
@@ -18,12 +19,9 @@ export const getDeviceLanguage = () => {
 };
 
 const initialState = {
-    language: getDeviceLanguage(),
-    messages: {
-        vi: {},
-        en: {},
-    },
-    onChangeLanguage: (value = 'vi') => value,
+    locale: getDeviceLanguage(),
+    messages,
+    toggleLanguage: (value = 'vi') => value,
 };
 
 const LanguageContext = React.createContext<LanguageProps>(initialState);

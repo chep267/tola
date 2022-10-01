@@ -5,7 +5,6 @@
  */
 
 import React, { useState } from 'react';
-import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
 import { useIntl } from 'react-intl';
 import { useTheme } from 'styled-components';
 import { useLanguage } from '@module-language/utils/useLanguage';
@@ -37,10 +36,13 @@ type Props = {
 function FormMenu(props: Props) {
     const intl = useIntl();
     const theme: any = useTheme();
-    const hookLanguage = useLanguage();
-    console.log('hookLanguage: ', hookLanguage);
+    const { locale, toggleLanguage } = useLanguage();
 
     const [menu, setMenu] = useState<null | HTMLElement>(null);
+
+    const setLanguageVI = () => toggleLanguage('vi');
+
+    const setLanguageEN = () => toggleLanguage('en');
 
     const data = [
         { id: 'lang', title: intl.formatMessage(msg.lang) },
@@ -49,10 +51,8 @@ function FormMenu(props: Props) {
     ];
 
     const onToggleMenu = (event: React.MouseEvent<HTMLElement>) => {
-        // @ts-ignore
-        hookLanguage.onChangeLanguage('vi');
-        // if (!menu) setMenu(event.currentTarget);
-        // else setMenu(null);
+        if (!menu) setMenu(event.currentTarget);
+        else setMenu(null);
     };
 
     return (
@@ -102,10 +102,10 @@ function FormMenu(props: Props) {
                         </ListItemIcon>
                         <Typography style={{ marginRight: 30 }}>{intl.formatMessage(msg.lang)}</Typography>
                     </AccordionSummary>
-                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }}>
+                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={setLanguageVI}>
                         <Typography>{intl.formatMessage(msg.vi)}</Typography>
                     </AccordionDetails>
-                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }}>
+                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={setLanguageEN}>
                         <Typography>{intl.formatMessage(msg.en)}</Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -138,7 +138,7 @@ const mapDispatchToProps = (dispatch: any) => {
     // do
     return {
         doSignIn: (payload) => {
-            dispatch({ type: SIGN_IN_ACTION.SIGN_IN.REQUEST, payload });
+            // dispatch({ type: SIGN_IN_ACTION.SIGN_IN.REQUEST, payload });
         },
     };
 };

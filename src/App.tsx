@@ -20,6 +20,9 @@ import rootSaga from '@app/sagas';
 import ThemeProvider from '@modules/module-theme/components/ThemeProvider';
 import LanguageProvider from '@module-language/components/LanguageProvider';
 
+// msg
+import messages from '@module-language/common/msg';
+
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
@@ -30,7 +33,7 @@ sagaMiddleware.run(rootSaga);
 
 const App = () => (
     <Provider store={store}>
-        <LanguageProvider messages={{}}>
+        <LanguageProvider messages={messages}>
             <ThemeProvider>
                 <MainScreen />
             </ThemeProvider>

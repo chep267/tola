@@ -5,7 +5,6 @@
  */
 
 import { useContext } from 'react';
-
 import LanguageContext, { LanguageProps } from '@module-language/utils/LanguageContext';
 
 export const useLanguage: () => LanguageProps = () => useContext(LanguageContext);

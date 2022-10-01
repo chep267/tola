@@ -9,9 +9,9 @@ import React from 'react';
 // Const
 import { LIGHT_THEME } from '@module-theme/constants';
 
-type Theme = {
+export type ThemeProps = {
     mode: string;
-    onChangeTheme?: () => void;
+    toggleTheme: () => void;
 };
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
     toggleTheme: () => null,
 };
 
-const ThemeContext = React.createContext<Theme>(initialState);
+const ThemeContext = React.createContext<ThemeProps>(initialState);
 
 ThemeContext.displayName = 'ThemeContext';
 
