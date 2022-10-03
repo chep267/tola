@@ -4,47 +4,72 @@
  *
  */
 
-import React from 'react';
+import React, { ReactNode, useRef } from 'react';
 
 // Component
-import { List, Item } from './Styles';
+import { Menu } from '@mui/material';
 
 // Utils
 import { emptyFunction, emptyObject } from '@module-base/constants/object';
 
 interface ButtonProps {
-    itemClassName?: string;
-    overlayClassName?: string;
-    isDisabled?: boolean;
-    onPress?(): void;
-    text?: string;
-    mode?: string;
-    size?: number;
-    style?: object;
     className?: string;
-
-    data?: Array<{ id?: string; title?: string; icon?: string; onPress?(): void }>;
+    style?: object;
+    menuId?: string;
+    menu?: any;
+    children?: ReactNode;
+    onCloseMenu?(event: any): void;
 }
 
-export default function MenuList(props: ButtonProps) {
-    const {
-        className = '',
-        overlayClassName = '',
-        itemClassName = '',
-        style = emptyObject,
-        isDisabled = false,
-        data = null,
-    } = props;
+function MenuList(props: ButtonProps) {
+    const { className = '', style = emptyObject, menuId = '', children, onCloseMenu = emptyFunction, menu } = props;
+
+    const MenuProps: any = useRef({
+        PaperProps: {
+            elevation: 0,
+            sx: {
+                overflow: 'visible',
+                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                mt: 1.5,
+
+                '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                },
+                '&:before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                },
+            },
+        },
+        transformOrigin: { horizontal: 'right', vertical: 'top' },
+        anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+    });
 
     return (
-        <List className={`${className} ${overlayClassName}`} isDisabled={isDisabled} style={style}>
-            {data &&
-                data.map(({ id, title, icon, onPress = emptyFunction }) => (
-                    <Item className={itemClassName} key={id || title} height={30} onClick={onPress}>
-                        {icon}
-                        {title}
-                    </Item>
-                ))}
-        </List>
+        <Menu
+            id={menuId}
+            className={className}
+            style={style}
+            anchorEl={menu}
+            open={Boolean(menu)}
+            onClose={onCloseMenu}
+            PaperProps={MenuProps.current.PaperProps}
+            transformOrigin={MenuProps.current.transformOrigin}
+            anchorOrigin={MenuProps.current.anchorOrigin}>
+            {children}
+        </Menu>
     );
 }
+
+export default MenuList;

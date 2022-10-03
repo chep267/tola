@@ -7,7 +7,7 @@
 import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useTheme } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Component
@@ -17,7 +17,7 @@ import InputComponent from '@module-base/components/Input';
 import msg from '@module-auth/common/msg';
 
 // Styles
-import { Form, FormTitle, FormFooter, FormContent, ButtonSignIn } from '@module-auth/components/Form/Style';
+import { FormTitle, FormFooter, FormContent, ButtonSignIn } from '@module-auth/components/Form/Style';
 import btn from '@module-base/components/Button/Animation/Test.module.css';
 
 type Props = {
@@ -26,7 +26,7 @@ type Props = {
 
 function SignInForm(props: Props) {
     const intl = useIntl();
-    const theme: any = useTheme();
+    const navigate = useNavigate();
     const { doSignIn } = props;
 
     const [account, setAccount] = useState('');
@@ -34,16 +34,14 @@ function SignInForm(props: Props) {
     const [status, setStatus] = useState('');
 
     const onSignIn = () => {
-        doSignIn({ account, password, onSuccess: onSignInSuccess, onFailure: onSignInFailure });
+        if (!account) return setStatus('account');
+        if (!password) return setStatus('password');
+        return doSignIn({ account, password, onSuccess: onSignInSuccess, onFailure: onSignInFailure });
     };
 
-    const onSignInSuccess = () => {
-        window.location.replace('/start');
-    };
+    const onSignInSuccess = () => navigate('/start', { replace: true });
 
-    const onSignInFailure = () => {
-        setStatus('wrong');
-    };
+    const onSignInFailure = () => setStatus('wrong');
 
     return (
         <>
@@ -55,12 +53,14 @@ function SignInForm(props: Props) {
                     placeholder={intl.formatMessage(msg.placeholderAccount)}
                     value={account}
                     onChange={setAccount}
+                    isError={['account', 'wrong'].includes(status)}
                     isAutoFocus
                 />
                 <InputComponent
                     placeholder={intl.formatMessage(msg.placeholderPassword)}
                     value={password}
                     onChange={setPassword}
+                    isError={['password', 'wrong'].includes(status)}
                     isRequire
                     isSecureText
                 />

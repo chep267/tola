@@ -11,5 +11,5 @@ const storeAuth = {
     },
 };
 
-export const statePath = 'auth';
+export const stateAuth = 'auth';
 export default storeAuth;

@@ -6,10 +6,11 @@
 
 import { combineReducers } from 'redux';
 import authReducer from '@module-auth/reducers/index';
+import { stateAuth } from '@module-auth/utils/configs/StoreAuth';
 // import MessengerReducer from "modules/module-messenger/reduces/message";
 
 const rootReducer = combineReducers({
-    auth: authReducer,
+    [stateAuth]: authReducer,
     // messenger: MessengerReducer
 });
 export default rootReducer;

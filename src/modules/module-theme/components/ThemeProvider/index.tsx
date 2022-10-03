@@ -12,7 +12,7 @@ import ThemeContext from '@module-theme/utils/ThemeContext';
 
 // Utils
 import localStorage from '@module-base/utils/localStorage';
-import { DARK_THEME, getThemes, LIGHT_THEME, themes } from '@module-theme/constants';
+import { DARK_THEME, LIGHT_THEME, themes } from '@module-theme/constants';
 
 /**
  * Note: Dam bao cau hinh themes lay tu server duoc tra va truoc khi mount component nay ra.
@@ -70,7 +70,7 @@ function ThemeProviderBase({ children }: Props) {
     const store = React.useMemo(
         () => ({
             mode,
-            getThemes,
+            theme,
             toggleTheme,
         }),
         [mode]

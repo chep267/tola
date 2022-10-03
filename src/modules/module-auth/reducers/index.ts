@@ -13,7 +13,7 @@ const initialState: AuthReducerProps = {
     isAuthUser: localStorage.getItem('ctl.status') === 'save',
     email: localStorage.getItem('ctl.email') || '',
     pathName: '/',
-    meId: localStorage.getItem('ctl.uid') || 'uid.xxx',
+    meId: '',
     user: emptyUser,
     image: {
         avatar: '',

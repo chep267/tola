@@ -4,18 +4,19 @@
  *
  */
 
-import React from 'react';
-
 // Const
-import { LIGHT_THEME } from '@module-theme/constants';
+import { LIGHT_THEME, themes } from '@module-theme/constants';
+import React from 'react';
 
 export type ThemeProps = {
     mode: string;
+    theme: any;
     toggleTheme: () => void;
 };
 
 const initialState = {
     mode: LIGHT_THEME,
+    theme: themes[LIGHT_THEME],
     toggleTheme: () => null,
 };
 

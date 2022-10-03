@@ -6,22 +6,16 @@
 
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useTheme } from 'styled-components';
-import { useLanguage } from '@module-language/utils/useLanguage';
 import { connect } from 'react-redux';
 
 // Component
-import {
-    Menu,
-    MenuItem,
-    ListItemIcon,
-    Divider,
-    Accordion,
-    AccordionSummary,
-    Typography,
-    AccordionDetails,
-} from '@mui/material';
+import { Menu, ListItemIcon, Divider, Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
 import { Settings, ExpandMore, Language } from '@mui/icons-material';
+import MenuList from '@module-base/components/MenuList';
+
+// Utils
+import { useLanguage } from '@module-language/utils/useLanguage';
+import { useTheme } from '@module-theme/utils/useTheme';
 
 // msg
 import msg from '@module-auth/common/msg';
@@ -35,14 +29,14 @@ type Props = {
 
 function FormMenu(props: Props) {
     const intl = useIntl();
-    const theme: any = useTheme();
     const { locale, toggleLanguage } = useLanguage();
+    const { mode, toggleTheme, theme } = useTheme();
 
     const [menu, setMenu] = useState<null | HTMLElement>(null);
 
-    const setLanguageVI = () => toggleLanguage('vi');
+    const onChangeLanguage = () => toggleLanguage(locale === 'vi' ? 'en' : 'vi');
 
-    const setLanguageEN = () => toggleLanguage('en');
+    const onChangeTheme = () => toggleTheme();
 
     const data = [
         { id: 'lang', title: intl.formatMessage(msg.lang) },
@@ -61,40 +55,7 @@ function FormMenu(props: Props) {
                 icon={{ name: 'menu', size: theme.iconSize.large, fill: theme.color.icon.base }}
                 onPress={onToggleMenu}
             />
-            <Menu
-                anchorEl={menu}
-                id="account-menu"
-                open={Boolean(menu)}
-                onClose={onToggleMenu}
-                PaperProps={{
-                    elevation: 0,
-                    sx: {
-                        overflow: 'visible',
-                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
-
-                        '& .MuiAvatar-root': {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                        },
-                        '&:before': {
-                            content: '""',
-                            display: 'block',
-                            position: 'absolute',
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: 'background.paper',
-                            transform: 'translateY(-50%) rotate(45deg)',
-                            zIndex: 0,
-                        },
-                    },
-                }}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
+            <MenuList menu={menu} onCloseMenu={onToggleMenu}>
                 <Accordion style={{ margin: 0, boxShadow: 'none' }}>
                     <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel1a-content" id="panel1a-header">
                         <ListItemIcon style={{ minWidth: 35 }}>
@@ -102,10 +63,10 @@ function FormMenu(props: Props) {
                         </ListItemIcon>
                         <Typography style={{ marginRight: 30 }}>{intl.formatMessage(msg.lang)}</Typography>
                     </AccordionSummary>
-                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={setLanguageVI}>
+                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={onChangeLanguage}>
                         <Typography>{intl.formatMessage(msg.vi)}</Typography>
                     </AccordionDetails>
-                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={setLanguageEN}>
+                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={onChangeLanguage}>
                         <Typography>{intl.formatMessage(msg.en)}</Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -117,14 +78,14 @@ function FormMenu(props: Props) {
                         </ListItemIcon>
                         <Typography style={{ marginRight: 30 }}>{intl.formatMessage(msg.theme)}</Typography>
                     </AccordionSummary>
-                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }}>
+                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={onChangeTheme}>
                         <Typography>{intl.formatMessage(msg.light)}</Typography>
                     </AccordionDetails>
-                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }}>
+                    <AccordionDetails style={{ textAlign: 'center', cursor: 'pointer' }} onClick={onChangeTheme}>
                         <Typography>{intl.formatMessage(msg.dark)}</Typography>
                     </AccordionDetails>
                 </Accordion>
-            </Menu>
+            </MenuList>
         </MenuContainer>
     );
 }

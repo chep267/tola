@@ -4,10 +4,8 @@
  *
  */
 
-import MenuList from '@module-base/components/MenuList';
 import styled from 'styled-components';
 import Button from '@module-base/components/Button';
-import { Expand, Glowing } from '@module-base/components/Button/Animation';
 import PureContainer from '@module-base/components/PureContainer';
 import { BorderRadiusCustom, FlexCustom } from '@module-theme/constants/Mixin';
 
@@ -42,7 +40,7 @@ export const FormTitle = styled(PureContainer)({
     span: { fontSize: 40, color: '#ff7f50', padding: '10px 0' },
 });
 
-export const FormFooter = styled(PureContainer)({
+export const FormFooter = styled.div({
     ...FlexCustom({ flexDirection: 'column', width: '82.5%', alignItems: 'flex-end', marginTop: 20 }),
 });
 

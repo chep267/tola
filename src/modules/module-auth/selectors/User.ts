@@ -6,11 +6,11 @@
 
 import { getState } from '@module-base/selectors/Data';
 import { emptyUser } from '@module-auth/constants/User';
-import { statePath } from '@module-auth/utils/configs/StoreAuth';
+import { stateAuth } from '@module-auth/utils/configs/StoreAuth';
 
 const genUid = () => `uid.${Date.now()}`;
 
-const getMe = (state: object) => getState(state, [statePath, 'me']) || emptyUser;
+const getMe = (state: object) => getState(state, [stateAuth, 'me']) || emptyUser;
 
 // const getMeId = (state: object) => getState(state, [statePath, 'me', 'meId']) || '';
 // const getMeName = (state: object) => getState(state, statePath) || emptyUser.info.name;
