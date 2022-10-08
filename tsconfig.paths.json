@@ -6,5 +6,6 @@
     "@module-theme/*": ["src/modules/module-theme/*"],
     "@module-auth/*": ["src/modules/module-auth/*"],
     "@module-error/*": ["src/modules/module-error/*"],
-    "@module-language/*": ["src/modules/module-language/*"]
+    "@module-language/*": ["src/modules/module-language/*"],
+    "@module-messenger/*": ["src/modules/module-messenger/*"]
 }

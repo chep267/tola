@@ -7,6 +7,7 @@
 import { useEffect, ReactElement } from 'react';
 import { useNavigate, RouteProps, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { stateAuth } from '@module-auth/utils/configs/StoreAuth';
 
 interface Props extends RouteProps {
     meId: string;
@@ -38,7 +39,7 @@ function PrivateRoute(props: Props) {
     return null;
 }
 
-const mapStateToProps = ({ auth }: any) => {
+const mapStateToProps = ({ [stateAuth]: auth }: any) => {
     const { meId } = auth;
     return { meId };
 };

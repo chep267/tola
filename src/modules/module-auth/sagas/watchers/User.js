@@ -1,4 +1,4 @@
-// import MAIN_ACTION from '../../../base/actions/MainAction';
+// import MAIN_ACTION from '../@module-base/actions/MainAction';
 // import { changeUserInfoWorker } from '../workers/User';
 // import { fork, take } from 'redux-saga/effects';
 //

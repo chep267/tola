@@ -12,12 +12,10 @@ import FormAuth from '@module-auth/components/Form';
 
 // constant
 import { FlexCustom } from '@module-theme/constants/Mixin';
+import SafeLayout from '@module-base/components/SafeLayout';
 
-const Container = styled.div({
-    ...FlexCustom({ backgroundColor: '#58ACFA' }),
-    width: '100%',
-    height: '100vh',
-    minHeight: 500,
+const Container = styled(SafeLayout)({
+    backgroundColor: '#f0f2f5',
 });
 
 function SignInScreen() {
