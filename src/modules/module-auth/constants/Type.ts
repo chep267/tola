@@ -22,8 +22,7 @@ export interface UserProps {
 }
 
 export interface AuthReducerProps {
-    isAuthUser: boolean;
-    email: string;
+    account: string;
     pathName: string;
     meId: string;
     user: UserProps;

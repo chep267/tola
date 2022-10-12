@@ -5,66 +5,32 @@
  */
 
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import AppBarItem from '@module-base/components/AppBar/AppBarItem';
 
-import iconMenu from '@module-base/assets/images/iconMenu.png';
-import { useLanguage } from '@module-language/utils/useLanguage';
-import styled from 'styled-components';
-
-const Container = styled.div({
-    display: 'flex',
-    backgroundColor: 'green',
-    width: '70px',
-    height: '100%',
-    zIndex: 999,
-});
+// Styles
+import { Container, BtnMenu, ListApp, ContainerFake } from './Style';
 
 function AppBarBase(props: any) {
-    const { doSignOut, name, className } = props;
-    const navigate = useNavigate();
-    const [isShowMenu, setShowMenu] = useState(false);
-    const { locale, toggleLanguage, messages } = useLanguage();
+    const { className, appIds = [0, 1, 2, 3, 4] } = props;
+    const [visibleAppBar, setVisibleAppBar] = useState(true);
 
-    const onSignOut = () => {
-        doSignOut();
-        navigate('/login');
-    };
-
-    const onChangeLanguage = () => {
-        // const newLang = lang === 'vi' ? 'en' : 'vi';
-        // onChangeLang(newLang);
-    };
-
-    const onShowMenu = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowMenu(!isShowMenu);
-    };
-
-    const onHideMenu = () => {
-        setShowMenu(false);
-    };
+    const toggleAppBar = () => setVisibleAppBar(!visibleAppBar);
 
     return (
-        <Container className={className} role="presentation" onClick={onHideMenu}>
-            <h1>{name}</h1>
-        </Container>
+        <>
+            <Container className={className} role="presentation" visibleAppBar={visibleAppBar}>
+                <BtnMenu onClick={toggleAppBar} title="Menu">
+                    M
+                </BtnMenu>
+                <ListApp>
+                    {appIds.map((value) => (
+                        <AppBarItem key={value} name={value} />
+                    ))}
+                </ListApp>
+            </Container>
+            <ContainerFake visibleAppBar={visibleAppBar} className={className} />
+        </>
     );
 }
 
-function mapStateToProps(state) {
-    return {
-        name: 'app',
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        doSignOut: () => {
-            // dispatch({ type: LOGIN_ACTION.SIGN_OUT });
-        },
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppBarBase);
+export default AppBarBase;

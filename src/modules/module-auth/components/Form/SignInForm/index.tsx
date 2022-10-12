@@ -5,7 +5,7 @@
  */
 
 import { SIGN_IN_ACTION } from '@module-auth/actions/SignIn';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -33,6 +33,12 @@ function SignInForm(props: Props) {
     const [password, setPassword] = useState('');
     const [status, setStatus] = useState('');
 
+    useEffect(() => {
+        if (status) {
+            setStatus('');
+        }
+    }, [account, password]);
+
     const onSignIn = () => {
         if (!account) return setStatus('account');
         if (!password) return setStatus('password');
@@ -55,6 +61,7 @@ function SignInForm(props: Props) {
                     onChange={setAccount}
                     isError={['account', 'wrong'].includes(status)}
                     isAutoFocus
+                    isRequire
                 />
                 <InputComponent
                     placeholder={intl.formatMessage(msg.placeholderPassword)}

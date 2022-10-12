@@ -4,19 +4,13 @@
  *
  */
 
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-import iconMenu from '@module-base/assets/images/iconMenu.png';
-import { useLanguage } from '@module-language/utils/useLanguage';
 import styled from 'styled-components';
+import SafeLayout from '@module-base/components/SafeLayout';
 
-const Container = styled.div({
-    display: 'flex',
-    backgroundColor: '#fff',
-    width: '100%',
-    height: '100%',
+const Container = styled(SafeLayout)({
+    backgroundColor: 'red',
 });
 
 function BodyBase(props: any) {

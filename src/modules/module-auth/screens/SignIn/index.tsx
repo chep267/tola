@@ -15,7 +15,11 @@ import { FlexCustom } from '@module-theme/constants/Mixin';
 import SafeLayout from '@module-base/components/SafeLayout';
 
 const Container = styled(SafeLayout)({
-    backgroundColor: '#f0f2f5',
+    height: '100vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 450,
+    backgroundColor: '#000',
 });
 
 function SignInScreen() {

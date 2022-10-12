@@ -10,6 +10,5 @@ export const Layout = styled.div(({ theme }) => ({
     display: 'flex',
     backgroundColor: theme.color.background.gray,
     width: '100%',
-    height: '100vh',
-    minHeight: 500,
+    height: '100%',
 }));

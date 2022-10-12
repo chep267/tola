@@ -12,24 +12,22 @@ import iconMenu from '@module-base/assets/images/iconMenu.png';
 import { useLanguage } from '@module-language/utils/useLanguage';
 import styled from 'styled-components';
 
-const Container = styled.div({
-    display: 'flex',
-    // position: 'fixed',
-    // top: 0,
-    // left: 0,
-    // right: 0,
-    backgroundColor: '#fff',
-    zIndex: 999,
-});
-
-const Cover = styled.div({
+const Container = styled.div(({ theme }) => ({
     display: 'flex',
     position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
+    justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: '#fff',
-    zIndex: 999,
+    zIndex: theme.zIndex.underMax,
+}));
+
+const ContainerFake = styled.div({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 });
 
 function HeaderBase(props: any) {
@@ -61,23 +59,10 @@ function HeaderBase(props: any) {
     return (
         <>
             <Container className={className} role="presentation" onClick={onHideMenu}>
-                <h1>{name}</h1>
-                {/*<img role="presentation" src={iconMenu} alt="" onClick={onShowMenu} />*/}
-                {/*{isShowMenu ? (*/}
-                {/*    <div>*/}
-                {/*        <div role="presentation" onClick={onChangeLanguage}>*/}
-                {/*            <span>{messages[locale]}</span>*/}
-                {/*        </div>*/}
-                {/*        <div />*/}
-                {/*        <div role="presentation" onClick={onSignOut}>*/}
-                {/*            <span>messages.login.signOut</span>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*) : null}*/}
+                <h2>{name}</h2>
+                <h3>setting</h3>
             </Container>
-            <Container className={className} role="presentation" onClick={onHideMenu}>
-                <h1>{name}</h1>
-            </Container>
+            <ContainerFake className={className} />
         </>
     );
 }

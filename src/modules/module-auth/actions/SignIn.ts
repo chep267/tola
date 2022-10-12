@@ -44,6 +44,12 @@ const SIGN_IN_WORKING = {
         state.image.avatar = avatar;
         state.image.background = background;
     },
+    [SIGN_IN_ACTION.SIGN_IN.SUCCESS]: (state: AuthReducerProps, { payload }: any) => {
+        const { account, user } = payload;
+        state.user = user;
+        state.account = account;
+        state.meId = 'uid-123';
+    },
 };
 
 export { SIGN_IN_ACTION, SIGN_IN_WORKING };

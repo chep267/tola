@@ -29,6 +29,7 @@ const Z_INDEX = {
     lv8: 80,
     lv9: 90,
     lv10: 100,
+    underMax: 998,
     max: 999,
 };
 

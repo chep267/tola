@@ -29,12 +29,11 @@ export function* signInWorker(payload: any) {
     const { account, password = 'abc123', onFailure = emptyFunction, type = 'account', data = emptyObject } = payload;
 
     if (type === 'account') {
-        const user = yield call(checkSignIn, account, password);
-        debugger;
-        if (user === 404) return onFailure('null');
-        if (user === 0) return onFailure('wrong');
+        // const user = yield call(checkSignIn, account, password);
+        // if (user === 404) return onFailure('null');
+        // if (user === 0) return onFailure('wrong');
         // localStorage.setItem('ctl.status', 'save');
-        yield put({ type: SIGN_IN_ACTION.SIGN_IN.SUCCESS, payload: { account, user } });
+        yield put({ type: SIGN_IN_ACTION.SIGN_IN.SUCCESS, payload: { account, user: emptyUser } });
         return null;
     }
 

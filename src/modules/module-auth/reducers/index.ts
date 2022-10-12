@@ -10,8 +10,7 @@ import { AuthReducerProps } from '@module-auth/constants/Type';
 import SignInReducers from './SignIn';
 
 const initialState: AuthReducerProps = {
-    isAuthUser: localStorage.getItem('ctl.status') === 'save',
-    email: localStorage.getItem('ctl.email') || '',
+    account: '',
     pathName: '/',
     meId: '',
     user: emptyUser,

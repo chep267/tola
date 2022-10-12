@@ -19,10 +19,11 @@ export default function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
-                {/*<Route path="/signin" element={<PrivateRoute type="auth" element={<SignInScreen />} />} />*/}
-                {/*<Route path="/start" element={<PrivateRoute type="start" element={<SignInScreen />} />} />*/}
-                {/*<Route path="*" element={<PrivateRoute element={<NotFoundScreen />} />} />*/}
-                <Route path="*" element={<MessengerScreen />} />
+                <Route path="/signin" element={<PrivateRoute type="auth" element={<SignInScreen />} />} />
+                <Route path="/start" element={<PrivateRoute type="start" element={<SignInScreen />} />} />
+                <Route path="/home" element={<PrivateRoute type="auth" element={<MessengerScreen />} />} />
+                <Route path="/messenger" element={<PrivateRoute type="auth" element={<MessengerScreen />} />} />
+                <Route path="*" element={<PrivateRoute element={<NotFoundScreen />} />} />
             </Routes>
         </BrowserRouter>
     );
