@@ -7,5 +7,6 @@
     "@module-auth/*": ["src/modules/module-auth/*"],
     "@module-error/*": ["src/modules/module-error/*"],
     "@module-language/*": ["src/modules/module-language/*"],
-    "@module-messenger/*": ["src/modules/module-messenger/*"]
+    "@module-messenger/*": ["src/modules/module-messenger/*"],
+    "@module-feed/*": ["src/modules/module-feed/*"]
 }

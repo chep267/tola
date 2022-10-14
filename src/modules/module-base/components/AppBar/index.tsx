@@ -4,32 +4,48 @@
  *
  */
 
-import React, { useState } from 'react';
-import AppBarItem from '@module-base/components/AppBar/AppBarItem';
+import React, { useContext } from 'react';
 
-// Styles
-import { Container, BtnMenu, ListApp, ContainerFake } from './Style';
+// components
+import AppBarItem from '@module-base/components/AppBar/AppBarItem';
+import { AppBar, ListApp, AppBarCover } from './Style';
+
+// Utils
+import UiContext from '@module-base/utils/Ui/UiContext';
+
+const AppIds = [
+    {
+        key: '1',
+        name: 'New Feed',
+        path: '/feed',
+    },
+    {
+        key: '2',
+        name: 'Messenger',
+        path: '/messenger',
+    },
+    {
+        key: '3',
+        name: 'Not Found',
+        path: '/404',
+    },
+];
 
 function AppBarBase(props: any) {
-    const { className, appIds = [0, 1, 2, 3, 4] } = props;
-    const [visibleAppBar, setVisibleAppBar] = useState(true);
-
-    const toggleAppBar = () => setVisibleAppBar(!visibleAppBar);
+    const { className, appIds = AppIds } = props;
+    const { appBar } = useContext(UiContext);
+    const { visible } = appBar;
 
     return (
-        <>
-            <Container className={className} role="presentation" visibleAppBar={visibleAppBar}>
-                <BtnMenu onClick={toggleAppBar} title="Menu">
-                    M
-                </BtnMenu>
+        <AppBarCover visibleAppBar={visible} className={className}>
+            <AppBar className={className} visibleAppBar={visible}>
                 <ListApp>
-                    {appIds.map((value) => (
-                        <AppBarItem key={value} name={value} />
+                    {appIds.map((app) => (
+                        <AppBarItem key={app.key} name={app.key} title={app.name} path={app.path} />
                     ))}
                 </ListApp>
-            </Container>
-            <ContainerFake visibleAppBar={visibleAppBar} className={className} />
-        </>
+            </AppBar>
+        </AppBarCover>
     );
 }
 

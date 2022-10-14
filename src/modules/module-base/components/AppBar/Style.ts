@@ -1,5 +1,12 @@
+/**
+ *
+ * @author dongntd@bkav.com on 06/09/2022.
+ *
+ */
+
 import { APP_BAR_WIDTH, HEADER_HEIGHT } from '@module-base/constants/Layout';
 import styled from 'styled-components';
+import { FlexBase } from '@module-theme/constants/Mixin';
 
 const getAppBarWidth = (visibleAppBar) => {
     if (visibleAppBar) {
@@ -10,68 +17,58 @@ const getAppBarWidth = (visibleAppBar) => {
         };
     }
     return {
-        width: '0',
-        minWidth: '0',
-        maxWidth: '0',
+        width: 0,
+        minWidth: 0,
+        maxWidth: 0,
     };
 };
 
-const Wrap = styled.div<{ visibleAppBar: boolean }>(({ visibleAppBar, theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+const Wrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    max-height: 100%;
+    transition: all 0.35s;
+    overflow: hidden;
+    @media screen and (max-width: 559px) {
+        // 60 + 10 + 480 + 10
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+    }
+`;
+
+export const AppBarCover = styled(Wrap)<{ visibleAppBar: boolean }>(({ visibleAppBar, theme }) => ({
     ...getAppBarWidth(visibleAppBar),
-    minHeight: '100%',
-    maxHeight: '100%',
-    zIndex: theme.zIndex.underMax,
-    transition: 'all 0.35s',
-    overflow: 'hidden',
+    zIndex: theme.zIndex.lv1,
 }));
 
-export const Container = styled(Wrap)`
-    &&& {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        @media screen and (max-width: 600px) {
-            width: 0 !important;
-            min-width: 0 !important;
-            max-width: 0 !important;
-        }
-    }
-`;
-
-export const ContainerFake = styled(Wrap)`
-    &&& {
-        z-index: 1;
-        @media screen and (max-width: 600px) {
-            width: 0 !important;
-            min-width: 0 !important;
-            max-width: 0 !important;
-        }
-    }
-`;
-
-const Menu = styled.button(({ theme }) => ({
+export const AppBar = styled(AppBarCover)(({ theme }) => ({
     position: 'fixed',
-    top: 15,
-    left: 20,
-    width: 30,
-    height: 30,
-    zIndex: theme.zIndex.max,
-    cursor: 'pointer',
+    top: HEADER_HEIGHT,
+    left: 0,
+    bottom: 0,
+    zIndex: theme.zIndex.underMax,
 }));
-
-export const BtnMenu = styled(Menu)`
-    @media screen and (max-width: 600px) {
-        display: none;
-    }
-`;
 
 export const ListApp = styled.div((props) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: HEADER_HEIGHT,
+}));
+
+export const AppItem = styled.button<{ isSelected: boolean }>(({ isSelected }) => ({
+    ...FlexBase,
+    backgroundColor: isSelected ? '#0cfc' : '#c3c3c3',
+    width: `${APP_BAR_WIDTH - 15}px`,
+    height: `${APP_BAR_WIDTH - 15}px`,
+    borderRadius: 8,
+    marginTop: 10,
+    border: 'none',
+    cursor: 'pointer',
+
+    ':hover': {
+        backgroundColor: '#0cfc',
+    },
 }));

@@ -11,9 +11,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from '@module-auth/components/PrivateRoute';
 
 // Screens
-import NotFoundScreen from '@module-base/screens/NotFound';
 import SignInScreen from '@module-auth/screens/SignIn';
+import HomeScreen from './HomeScreen';
+import FeedScreen from '@module-feed/screens/NewFeed/index';
 import MessengerScreen from '@module-messenger/screens/MessengerApp';
+import NotFoundScreen from '@module-base/screens/NotFound';
 
 export default function AppRouter() {
     return (
@@ -21,10 +23,19 @@ export default function AppRouter() {
             <Routes>
                 <Route path="/signin" element={<PrivateRoute type="auth" element={<SignInScreen />} />} />
                 <Route path="/start" element={<PrivateRoute type="start" element={<SignInScreen />} />} />
-                <Route path="/home" element={<PrivateRoute type="auth" element={<MessengerScreen />} />} />
-                <Route path="/messenger" element={<PrivateRoute type="auth" element={<MessengerScreen />} />} />
-                <Route path="*" element={<PrivateRoute element={<NotFoundScreen />} />} />
+                <Route path="*" element={<PrivateRoute type="auth" element={<HomeScreen element={<HomeRouter />} />} />} />
             </Routes>
         </BrowserRouter>
+    );
+}
+
+function HomeRouter() {
+    return (
+        <Routes>
+            <Route path="feed" element={<FeedScreen />} />
+            <Route path="messenger" element={<MessengerScreen />} />
+            <Route path="/" element={<FeedScreen />} />
+            <Route path="*" element={<NotFoundScreen />} />
+        </Routes>
     );
 }

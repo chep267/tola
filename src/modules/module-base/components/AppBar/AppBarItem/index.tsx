@@ -5,28 +5,26 @@
  */
 
 import React from 'react';
-import styled from 'styled-components';
-import { APP_BAR_WIDTH } from '@module-base/constants/Layout';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const Container = styled.div({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'gray',
-    width: `${APP_BAR_WIDTH - 10}px`,
-    height: `${APP_BAR_WIDTH - 10}px`,
-    borderRadius: 8,
-    marginTop: 10,
-    cursor: 'pointer',
-});
+// Components
+import { AppItem } from '../Style';
 
 function AppBarItem(props: any) {
-    const { doSignOut, name = 'app1', className } = props;
+    const { path, name, className, title } = props;
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const isSelected = location.pathname === path;
+
+    const onPressApp = () => {
+        if (!isSelected) navigate(path, { replace: true });
+    };
 
     return (
-        <Container className={className} role="presentation">
-            <span>{name}</span>
-        </Container>
+        <AppItem className={className} title={title} onClick={onPressApp} isSelected={isSelected}>
+            <h3>{name}</h3>
+        </AppItem>
     );
 }
 

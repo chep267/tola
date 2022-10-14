@@ -29,6 +29,7 @@ const Z_INDEX = {
     lv8: 80,
     lv9: 90,
     lv10: 100,
+    cover: 1,
     underMax: 998,
     max: 999,
 };
@@ -68,7 +69,7 @@ export const themes = {
                 linkHover: LIGHT_COLOR.MAIN_COLOR,
             },
             background: {
-                default: '#ffffff',
+                default: '#f0f2f5',
                 gray: '#f0f2f5',
                 main: LIGHT_COLOR.MAIN_COLOR,
                 bodyBG: LIGHT_COLOR.BODY_BG,
@@ -121,7 +122,7 @@ export const themes = {
                 linkHover: DARK_COLOR.MAIN_COLOR,
             },
             background: {
-                default: '#ffffff',
+                default: '#c3c3c3',
                 gray: '#f0f2f5',
                 main: DARK_COLOR.MAIN_COLOR,
                 bodyBG: DARK_COLOR.BODY_BG,

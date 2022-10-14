@@ -19,6 +19,7 @@ import rootSaga from '@app/sagas';
 // Utils
 import ThemeProvider from '@modules/module-theme/components/ThemeProvider';
 import LanguageProvider from '@module-language/components/LanguageProvider';
+import UiProvider from '@module-base/utils/Ui';
 
 // msg
 import messages from '@module-language/common/msg';
@@ -35,7 +36,9 @@ const App = () => (
     <Provider store={store}>
         <LanguageProvider messages={messages}>
             <ThemeProvider>
-                <MainScreen />
+                <UiProvider>
+                    <MainScreen />
+                </UiProvider>
             </ThemeProvider>
         </LanguageProvider>
     </Provider>

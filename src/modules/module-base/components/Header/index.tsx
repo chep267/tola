@@ -4,66 +4,35 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import iconMenu from '@module-base/assets/images/iconMenu.png';
-import { useLanguage } from '@module-language/utils/useLanguage';
-import styled from 'styled-components';
+// Components
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { BtnMenu, HeaderCover, Header } from './Style';
 
-const Container = styled.div(({ theme }) => ({
-    display: 'flex',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    zIndex: theme.zIndex.underMax,
-}));
-
-const ContainerFake = styled.div({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-});
+// Utils
+import UiContext from '@module-base/utils/Ui/UiContext';
 
 function HeaderBase(props: any) {
     const { doSignOut, name, className } = props;
     const navigate = useNavigate();
-    const [isShowMenu, setShowMenu] = useState(false);
-    const { locale, toggleLanguage, messages } = useLanguage();
-
-    const onSignOut = () => {
-        doSignOut();
-        navigate('/login');
-    };
-
-    const onChangeLanguage = () => {
-        // const newLang = lang === 'vi' ? 'en' : 'vi';
-        // onChangeLang(newLang);
-    };
-
-    const onShowMenu = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setShowMenu(!isShowMenu);
-    };
-
-    const onHideMenu = () => {
-        setShowMenu(false);
-    };
+    const { appBar } = useContext(UiContext);
+    const { visible, toggleVisible } = appBar;
 
     return (
-        <>
-            <Container className={className} role="presentation" onClick={onHideMenu}>
+        <HeaderCover className={className}>
+            <Header className={className}>
+                <BtnMenu onClick={toggleVisible} title="Menu">
+                    {visible ? <KeyboardDoubleArrowLeftIcon /> : <KeyboardDoubleArrowRightIcon />}
+                </BtnMenu>
                 <h2>{name}</h2>
                 <h3>setting</h3>
-            </Container>
-            <ContainerFake className={className} />
-        </>
+            </Header>
+        </HeaderCover>
     );
 }
 

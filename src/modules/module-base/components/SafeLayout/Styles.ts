@@ -8,7 +8,8 @@ import styled from 'styled-components';
 
 export const Layout = styled.div(({ theme }) => ({
     display: 'flex',
-    backgroundColor: theme.color.background.gray,
+    position: 'relative',
+    backgroundColor: theme.color.background.default,
     width: '100%',
     height: '100%',
 }));

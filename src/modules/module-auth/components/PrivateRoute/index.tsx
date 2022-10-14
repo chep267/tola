@@ -28,7 +28,7 @@ function PrivateRoute(props: Props) {
                 navigate('/signin', { replace: true });
             }
         } else {
-            navigate(window['tola-prev-route'] || '/home', { replace: true });
+            navigate(window['tola-prev-route'] || '/feed', { replace: true });
         }
     }, [meId]);
 
